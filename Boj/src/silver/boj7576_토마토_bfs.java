@@ -3,6 +3,26 @@ package silver;
 import java.io.*;
 import java.util.*;
 
+/*
+π›∑  : 
+
+5 5
+1 0 0 0 1
+0 -1 -1 -1 0
+0 -1 -1 -1 0
+0 -1 -1 -1 0
+1 0 0 0 0
+ans : 4
+
+6 5
+1 0 0 0 0 0
+-1 -1 -1 -1 -1 -1
+-1 0 0 0 0 0
+-1 0 0 1 0 0
+-1 0 0 0 0 0
+ans : 5
+
+ */
 public class boj7576_≈‰∏∂≈‰_bfs {
 
 	static int N, M;
