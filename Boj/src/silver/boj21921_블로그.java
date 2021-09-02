@@ -49,7 +49,6 @@ public class boj21921_ºí·Î±× {
 			}else if(max == maxArr[i]) {
 				cnt++;
 			}
-			
 		}
 		
 		if(max == 0) {

@@ -10,7 +10,7 @@ import java.io.*;
 	
 	
  */
-public class boj7876_토마토 {
+public class boj7576_토마토 {
 
 	static int N, M;
 	static int map[][];
@@ -61,22 +61,22 @@ public class boj7876_토마토 {
 			}
 		}
 		
-		System.out.println("토마토 총 갯수 : " + total_tomato);
+		//System.out.println("토마토 총 갯수 : " + total_tomato);
 		while(true) {
 
 			visited = new boolean[N][M];
-			int sum = 0;
+			int currentTomato = 0;
+			int prevtTomato = tomato;
 			
 			for(int i = 0; i< N; i++) {
 				for(int j = 0; j < M; j++) {
 					if(map[i][j] == 1) {
-						
 						dfs(i,j);
-						sum += 1;
+						currentTomato++;
 					}
 				}
 			}
-			//System.out.println(tomato);
+			System.out.println(tomato);
 
 			for(int i = 0; i< N; i++) {
 				for(int j = 0; j < M; j++) {
@@ -86,8 +86,13 @@ public class boj7876_토마토 {
 			}
 
 			
-			if(sum == total_tomato) break;
+			if(currentTomato == total_tomato) break;
 			day++;
+			
+			if(prevtTomato == tomato) {
+				day = -1;
+				break;
+			}
 		}
 		System.out.println(day);
 		
