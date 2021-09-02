@@ -44,7 +44,7 @@ public class boj7576_토마토 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int day = 0;
+		int day = 1;
 		
 		M = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(st.nextToken());
@@ -56,6 +56,7 @@ public class boj7576_토마토 {
 			for(int j = 0; j < M; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 				if(map[i][j] >=0) {
+					if(map[i][j] == 1) tomato++;
 					total_tomato++;
 				}
 			}
@@ -65,28 +66,26 @@ public class boj7576_토마토 {
 		while(true) {
 
 			visited = new boolean[N][M];
-			int currentTomato = 0;
 			int prevtTomato = tomato;
 			
 			for(int i = 0; i< N; i++) {
 				for(int j = 0; j < M; j++) {
 					if(map[i][j] == 1) {
 						dfs(i,j);
-						currentTomato++;
 					}
 				}
 			}
-			System.out.println(tomato);
-
+			System.out.println("익은 토마토 갯수 : " + tomato + ", 총 토마토 갯수 : " + total_tomato );
+			System.out.println(day +"]");
 			for(int i = 0; i< N; i++) {
 				for(int j = 0; j < M; j++) {
 					System.out.print(map[i][j]);
 				}
 			System.out.println();
 			}
+			System.out.println();
 
-			
-			if(currentTomato == total_tomato) break;
+			if(tomato == total_tomato) break;
 			day++;
 			
 			if(prevtTomato == tomato) {
@@ -94,9 +93,9 @@ public class boj7576_토마토 {
 				break;
 			}
 		}
-		System.out.println(day);
 		
-
+		if(day == 1) day = 0;
+		System.out.println(day);
 		
 	}
 }
