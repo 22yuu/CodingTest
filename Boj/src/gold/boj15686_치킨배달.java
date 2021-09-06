@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 
-/*
+/* 
  * 0은 빈칸, 1은 집, 2는 치킨집
  * 
  */
@@ -14,19 +14,19 @@ public class boj15686_치킨배달 {
 	public static int map[][];
 	public static int dx[] = {-1, 1, 0,  0};
 	public static int dy[] = { 0, 0, 1, -1};
-	public static boolean visited[][];
-	public static int[][] dist;
+	public static ArrayList<Coord> homes;
+	public static ArrayList<Coord> chickens;
+	public static boolean visited[];
+	public static int answer;
+	public static int minDist = Integer.MAX_VALUE;
 	
-	public static void dfs(int x, int y) {
+
+	public static class Coord {
+		int x, y;
 		
-		
-		for(int d = 0; d < 4; d++) {
-			int nx = x + dx[d];
-			int ny = y + dy[d];
-			
-			if(nx < 0 || ny < 0 || nx >= N || ny >= N) continue;
-			
-			
+		public Coord(int x, int y) {
+			this.x = x;
+			this.y = y;
 		}
 	}
 	
@@ -37,11 +37,11 @@ public class boj15686_치킨배달 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		int nHomes = 0;
-		int nChickens = 0;
+		homes = new ArrayList<>();
+		chickens = new ArrayList<>();
 		
 		map = new int[N+1][N+1];
-		visited = new boolean[N+1][N+1];
+		
 		
 		for(int i = 1; i <= N; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -50,21 +50,48 @@ public class boj15686_치킨배달 {
 				map[i][j] = num;
 				
 				if(num == 1) {
-					nHomes++;
+					homes.add(new Coord(i, j));
 				} else if( num == 2) {
-					nChickens++;
+					chickens.add(new Coord(i, j));
 				}
 			}
 		}
 		
-		dist = new int[nHomes][nChickens];
-		
-		
-		
-		
+		visited = new boolean[chickens.size()];
+		selectChicken(0, 0);
+
+		System.out.println(minDist);
 	}
 	
-	public static int getDistance() {
-		return 0;
+	public static void selectChicken(int idx, int count) {
+		if(count == M) {
+			int sum = 0;
+			int dist = 0;
+			int cnt = 0;
+			for(Coord home : homes) {
+				int min = Integer.MAX_VALUE;
+				for(int i = 0; i < visited.length; i++) {
+					if(visited[i]) {
+						dist = Math.abs(home.x - chickens.get(i).x) + Math.abs(home.y - chickens.get(i).y);
+						min = Math.min(min, dist);
+//						cnt++;
+//						System.out.println("cnt : " + cnt);
+					}
+				}
+				sum += min;
+				
+			}
+			//System.out.println(sum);
+			minDist = Math.min(minDist, sum);
+			return;
+		}
+		
+		for(int i = idx; i < chickens.size(); i++) {
+			visited[i] = true;
+			selectChicken(i + 1, count + 1);
+			visited[i] = false;
+		}
+		
+		
 	}
 }
