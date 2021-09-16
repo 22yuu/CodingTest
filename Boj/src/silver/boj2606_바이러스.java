@@ -7,7 +7,7 @@ public class boj2606_바이러스 {
 
 	public static int N, M; // 컴퓨터의 수, 네트워크 쌍의 수
 	
-	public static boolean[][] Graph;
+	public static int[][] Graph;
 	public static boolean[] visited;
 	
 	public static void bfs() {
@@ -22,13 +22,13 @@ public class boj2606_바이러스 {
 			
 			int node = que.poll();
 			
-			answer++;
 			
-			for(int i = 1; i <= N; i++) {
+			for(int i = 1; i < Graph.length; i++) {
 				
-				if(i != node && Graph[node][i] && !visited[node]) {
+				if(Graph[node][i] == 1 && !visited[i]) {
 					que.offer(i);
 					visited[i] = true;
+					answer++;
 				}
 			}
 		}
@@ -41,7 +41,7 @@ public class boj2606_바이러스 {
 		N = Integer.parseInt(br.readLine());
 		M = Integer.parseInt(br.readLine());
 		
-		Graph = new boolean[N+1][N+1];
+		Graph = new int[N+1][N+1];
 		visited = new boolean[N+1];
 		
 		for(int i = 0; i < M; i++) {
@@ -50,7 +50,8 @@ public class boj2606_바이러스 {
 			int A = Integer.parseInt(st.nextToken());
 			int B = Integer.parseInt(st.nextToken());
 			
-			Graph[A][B] = Graph[B][A] =  true;
+			Graph[A][B] = 1;
+			Graph[B][A] = 1;
 		}
 		
 		bfs();
