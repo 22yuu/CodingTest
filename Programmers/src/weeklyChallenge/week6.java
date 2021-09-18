@@ -7,6 +7,7 @@ package weeklyChallenge;
  * 
  */
 public class week6 {
+	
 	public Boxer boxers[]; // 복서들의 정보를 저장할 객체 배열
     public double[] nBoxersWinRate; // 복서들의 승률을 저장할 배열
     public int[] winHeavier;
