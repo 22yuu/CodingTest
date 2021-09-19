@@ -55,6 +55,7 @@ public class boj21923_°î¿¹ºñÇà {
 		
 		visited[N-1][0] = true;
 		dfs(N-1, 0, map[N-1][0]);
+		//System.out.println(max);
 		
 	}
 }
