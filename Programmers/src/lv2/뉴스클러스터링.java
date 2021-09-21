@@ -10,6 +10,9 @@ public class 뉴스클러스터링 {
 		
 		str1 = str1.toUpperCase();
 		
+		System.out.println('A' - 65);
+		System.out.println('*' - 65);
+		System.out.println('+' - 65);
 		System.out.println(str1);
 	}
 }
