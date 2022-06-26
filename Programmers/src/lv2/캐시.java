@@ -2,6 +2,8 @@ package lv2;
 
 import java.util.*;
 
+// https://velog.io/@hyeon930/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%BA%90%EC%8B%9C-Java
+
 public class Ä³½Ã {
 	
 	 	static final int CACHE_HIT = 1;
