@@ -2,6 +2,7 @@ package lv2;
 import java.util.*;
 
 public class ¶¥µû¸Ô±â {
+	// hopscotch ¶¥µû¸Ô±â
 	  public static int[] findMax(int[] arr1, int[] arr2) {
 	        
 	        int newArr[] = new int[arr1.length];

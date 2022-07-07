@@ -37,6 +37,7 @@ public class BinaryCalculator {
 		String binaryNumber = Integer.toBinaryString(8);
 		System.out.println("이진값 : " + binaryNumber);
 		
-		
+		int num = Integer.parseInt(binaryNumber, 2);
+		System.out.println("2진수 -> 10진수 : " + num);
 	}
 }
