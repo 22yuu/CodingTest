@@ -3,7 +3,7 @@ package bronze;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
-import java.util.*;
+
 public class boj2460_지능형기차2 {
 
 	public static void main(String[] args) throws Exception {
@@ -23,9 +23,7 @@ public class boj2460_지능형기차2 {
 			max = Math.max(max, people);
 			
 		}
-		
 		System.out.println(max);
-
 	}
 
 }
