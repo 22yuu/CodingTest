@@ -60,9 +60,5 @@ public class boj11655_ROT13 {
 		for(String str : strArr) {
 			System.out.print(Convert(str));
 		}
-		
-		
-
 	}
-
 }
