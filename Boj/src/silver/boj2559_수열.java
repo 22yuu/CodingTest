@@ -23,28 +23,18 @@ public class boj2559_수열 {
 		for(int i = 0; i < N; i++) {
 			temp[i] = Integer.parseInt(st.nextToken());
 		}
-		
-		if(N == 2) {
-			if( K  == 2) {
-				System.out.println(temp[0] + temp[1]);
-				return;
-			}
-			
-			if( K == 1) {
-				if(temp[0] > temp[1]) System.out.println(temp[0]);
-				else System.out.println(temp[1]);
-				return;
-			}
-			
-		}
+
 		
 		for(int i = 0; i < N; i++) {
 			int sum = 0;
 			
-			for(int j = 0; j < K; j++) {
-				if( i + j > N - 1) break;
-				sum += temp[i+j];
-				System.out.println(sum);
+			for(int j = i; j < i+K; j++) {
+				if( j > N - 1) {
+					System.out.println(MAX);
+					return;
+				}
+				sum += temp[j];
+//				System.out.println(sum);
 			}
 //			System.out.println(sum);
 			MAX = Math.max(MAX, sum);
