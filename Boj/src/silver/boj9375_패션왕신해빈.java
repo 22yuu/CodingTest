@@ -5,7 +5,7 @@ import java.io.*;
 
 public class boj9375_ÆÐ¼Ç¿Õ½ÅÇØºó {
 
-	private static HashMap<String, String> hm = new HashMap<>();
+	private static HashMap<String, String> hm;
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -15,8 +15,8 @@ public class boj9375_ÆÐ¼Ç¿Õ½ÅÇØºó {
 		for(int t = 0; t < T; t++) {
 			int n = Integer.parseInt(br.readLine());
 			int countGears = 0;
-			int answer = 0;
-			
+			int answer = 1;
+			hm = new HashMap<>();
 			
 			for(int i = 0; i < n; i++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
