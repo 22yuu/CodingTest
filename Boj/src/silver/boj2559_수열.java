@@ -3,7 +3,7 @@ package silver;
 import java.util.*;
 import java.io.*;
 
-public class boj2559_ìˆ˜ì—´ {
+public class boj2559_¼ö¿­ {
 
 	private static int N, K, MAX;
 	private static int[] temp;
