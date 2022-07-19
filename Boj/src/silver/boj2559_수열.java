@@ -42,5 +42,4 @@ public class boj2559_¼ö¿­ {
 		
 		System.out.println(MAX);
 	}
-
 }
