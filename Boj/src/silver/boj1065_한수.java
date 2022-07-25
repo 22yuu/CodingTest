@@ -5,8 +5,6 @@ import java.io.*;
 
 public class boj1065_ÇÑ¼ö {
 
-	
-	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
