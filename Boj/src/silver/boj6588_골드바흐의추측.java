@@ -31,8 +31,6 @@ public class boj6588_골드바흐의추측 {
 				int temp = n - i;
 				
 				if(!prime[temp] && !prime[i]) {
-					// !prime[i] 이걸 추가해주니 맞았음... 왜??????
-					// 어차피 모두 소수이므로 !prime[temp]으로 조건줘도 맞는거 아닌가...? 
 //					System.out.println(n + " = " + i + " + " + temp);
 					sb.append(n + " = " + i + " + " + temp).append("\n");
 					isRight = true;
