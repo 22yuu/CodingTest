@@ -7,86 +7,106 @@ import java.io.*;
 
 public class boj1107_리모컨v2 {
 
-	private static int N, M;
+	private static int N, M, target;
 	private static boolean[] buttons;
 	private static List<Integer> list = new ArrayList<>();
-	private static int length;
+	private static int length; // 채널 길이 수
+	private static int MIN = Integer.MAX_VALUE; // 버튼을 누루는 최소 횟수를 저장할 변수
+	private static int minChannel;
+	private static int[] sel;
+	private static int answer;
+	private static int minValue = Integer.MAX_VALUE;
 	
-	public static void makeNums(int idx, String num) {
+	public static void permutation(int idx, String ch) {
 		
-//		if(idx == length) return;
-		
-		if(idx == length) {
-			System.out.println(num);
-//			if(!num.equals("")) list.add(Integer.parseInt(num));
-			list.add(Integer.parseInt(num));
+		if(idx <= length && idx > 0) {
+			StringBuilder sb = new StringBuilder();
+			
+//			for(int i : sel) sb.append(i);
+//			System.out.println(sb.toString());
+//			String str = sb.toString();
+//			int channel = Integer.parseInt(str);
+			int channel = Integer.parseInt(ch);
+			list.add(channel);
+			
+//			int diff = Math.abs(target - channel);
+//
+//			if(MIN >= diff && channel != 0) {
+//				minChannel = channel;
+//				MIN = diff;
+//				int value = ((int)Math.log10(channel)+1) + diff;
+//				System.out.println("value : " + value + " / " + "channel : " + channel + " / " + " diff : " + diff + " / current answer value : " + minValue);
+//				answer = Math.min(answer, value);
+//				if(minValue > value) {
+//					minValue = value;
+//				}
+//			}
+			
 			return;
 		}
 		
-		for(int i = 0; i < 10; i++) {
-			if(buttons[i]) continue;
-			makeNums(idx+1, num + i);
-//			if(!num.equals("")) list.add(Integer.parseInt(num));
+		
+		for(int i = 0 ; i < 10; i++) {
+			if(!buttons[i]) {
+//				sel[idx] = i;
+				System.out.println(i);
+				permutation(idx+1, ch + i);
+			}
 		}
+		
+		
 	}
 	
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		answer = 100; // 처음 보고 있는 채널은 100이다.
 		String targetNum = br.readLine();
 		length = targetNum.length();
+		target = Integer.parseInt(targetNum);
 		N = Integer.parseInt(targetNum);
 		M = Integer.parseInt(br.readLine());
 		
-		buttons = new boolean[10];
-		
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		for(int i = 0 ; i < M; i++) {
-			int idx = Integer.parseInt(st.nextToken());
-			buttons[idx] = true;
-		}
-		
-		// Target Number가 100인 경우
-		if(N == 100) {
-			System.out.println(0);
-			return;
-		} else if(M == 0) {
-			// 고장난 버튼이 없는 M = 0 인 경우
+		if(M == 0) {
 			System.out.println(length);
 			return;
-		} else if(M == 10) {
-			// +,- 버튼을 제외한 모든 숫자 버튼이 고장난 M = 10인 경우
-			System.out.println(100 - N);
+		}
+		
+		if(target == 100) {
+			System.out.println(0);
 			return;
 		}
 		
-		// 위의 초기 조건에 포함이 안된 경우 버튼의 조합으로 Target Number의 length길이 만큼 넘버를 생성해서 차이가 최소값인 넘버를 찾기
-		
-		
-		makeNums(0, "");
-		System.out.println(list);
-		
-		int min = Integer.MAX_VALUE;
-		int diff = 0;
-		int minNum = 0;
-		int answer = 10000000;
-		for(int num: list) {
-//			min = Math.min(min, Math.abs(N - num));
-			diff = Math.abs(N - num);
-			if(min >= diff) {
-				min = diff;
-				minNum = num;
-				
-				int pressedCount = (int)(Math.log10(minNum)+1);
-				answer = Math.min(answer, min + pressedCount);
-				System.out.println(answer);
-//				System.out.println(min + " " + minNum + " " + answer);
-			}
-		}
+		String str = br.readLine();
+		String[] arr = str.split(" ");
+		buttons = new boolean[10];
+		sel = new int[length];
 
-		System.out.println(min + " " + minNum);
-		System.out.println(answer);
+		for(int i = 0; i < arr.length; i++) {
+			int num = Integer.parseInt(arr[i]);
+			// 고장난 버튼 true!
+			buttons[num] = true;
+		}
+		
+		int isPressCount = 0;
+		for(int i = 0; i < targetNum.length(); i++) {
+			 int num = targetNum.charAt(i) - '0';
+			 
+			 if(!buttons[num]) isPressCount++;
+		}
+		
+		if(length == isPressCount) {
+			System.out.println(length);
+			return;
+		} 
+		
+		
+		String ch = "";
+		permutation(0, ch);
+		System.out.println(list);
+//		System.out.println(MIN + " " + minChannel);
+//		System.out.println(((int)Math.log10(minChannel)+1) + MIN);
+//		System.out.println(minValue);
 		
 // 채널 수만큼 누루지 않는 경우도 있음...		
 //		int answer = length + min;
