@@ -32,7 +32,7 @@ public class boj14500_테트로미노 {
 			cnt = 1;
 			sum = map[x][y];
 			
-			dfs(x, y, cnt, sum);
+//			dfs(x, y, cnt, sum);
 			return;
 		}
 		
