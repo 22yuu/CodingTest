@@ -8,27 +8,42 @@ public class boj1759_암호만들기 {
 	private static int L, C;
 	private static char[] strs;
 	private static char[] sel;
-	private static boolean[] visited;
+	private static List<Character> vowels = Arrays.asList('a', 'e', 'i', 'o', 'u');
+	
+	// 최소 1개 모음과 최소 2개의 자음으로 구성
+	public static boolean isValid(String str) {
+		
+		char[] chars = str.toCharArray();
+		int vowelCount = 0; // 모음 카운트
+		int consonantCount = 0; // 자음 카운트
+		
+		for(int i = 0; i < chars.length; i++) {
+			if(vowels.contains(chars[i])) {
+				vowelCount++;
+			} else {
+				consonantCount++;
+			}
+		}
+		
+		if(vowelCount >= 1 && consonantCount >= 2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public static void func(int start, int idx) {
 		
 		if(idx == L) {
-			Arrays.sort(sel);
 			String str = new String(sel);
-			System.out.println(str);
+			if(isValid(str)) System.out.println(str);
 			return;
 		}
 		
 		
-		for(int i = 0; i < C; i++) {
-//			if(visited[i]) continue;
-//			visited[i] = true;
-//			sel[idx] = strs[i];
-//			func(i, idx+1);
-//			visited[i] = false;
-			
+		for(int i = start; i < C; i++) {
 			sel[idx] = strs[i];
-			func(i, idx+1);
+			func(i+1, idx+1);
 		}
 	}
 	
@@ -38,15 +53,16 @@ public class boj1759_암호만들기 {
 		
 		L = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
-		st = new StringTokenizer(br.readLine());
+		String[] temp = br.readLine().toLowerCase().split(" ");
 		
 		strs = new char[C];
 		sel  = new char[L];
-		visited = new boolean[C];
 		
-		for(int i = 0; i < C; i++) strs[i] = st.nextToken().charAt(0);
-		
+		for(int i = 0; i < C; i++) strs[i] = temp[i].charAt(0);
+		Arrays.sort(strs);
 		func(0, 0);
+		
+//		isValid("acis");
 		
 	}
 }
