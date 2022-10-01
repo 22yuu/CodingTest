@@ -43,8 +43,6 @@ public class swea1983 {
 			
 			int index = (N - findIndex - 1) / div;
 			
-			
-			
 			System.out.printf("#%d %s\n", test_case, COURSE_CREDIT[index]);
 		}
 		
