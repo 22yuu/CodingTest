@@ -53,7 +53,7 @@ public class swea1244 {
 					index++;
 				} 
 				else {
-					// index 값과 maxIndex 값이 같다면
+					// index 값과 maxIndex 값이 같다면 마지막이거나 남은 숫자들 중 최대값이 없음 
 					// 그래도 반드시 교환을 해야됨 예 ) iter : 1 / 94 -> 49 
 					
 					maxIndex = findMaxIndex(numArr, index);
