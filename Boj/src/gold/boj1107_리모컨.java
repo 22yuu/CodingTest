@@ -3,7 +3,7 @@ package gold;
 import java.io.*;
 import java.util.*;
 
-public class boj1107_¸®¸ðÄÁ {
+public class boj1107_ë¦¬ëª¨ì»¨ {
 	
 	private static int M;
 	private static int Min = Integer.MAX_VALUE;
