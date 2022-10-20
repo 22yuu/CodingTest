@@ -3,14 +3,15 @@ package silver;
 import java.io.*;
 import java.util.*;
 
-public class boj15655_N°úM6 {
+public class boj15654_Nê³¼M {
 
 	private static int N, M;
-	private static int[] nums;
 	private static int[] sel;
+	private static int[] nums;
 	private static boolean[] visited;
-
-	public static void combination(int start, int idx) {
+	
+	public static void combination(int idx) {
+		
 		
 		if(idx == M) {
 			for(int i : sel) System.out.print(i + " ");
@@ -19,17 +20,15 @@ public class boj15655_N°úM6 {
 			return;
 		}
 		
-		
-		for(int i = start; i < N; i++) {
-			
-			if(visited[i]) continue;
-			
-			visited[i] = true;
-			sel[idx] = nums[i];
-			combination(i, idx+1);
-			visited[i] = false;
-			
+		for(int i = 0; i < N; i++) {
+			if(!visited[i]) {
+				visited[i] = true;
+				sel[idx] = nums[i];
+				combination(idx+1);
+				visited[i] = false;
+			}
 		}
+		
 	}
 	
 	public static void main(String[] args) throws Exception {
@@ -39,10 +38,9 @@ public class boj15655_N°úM6 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		nums = new int[N];
 		sel = new int[M];
+		nums = new int[N];
 		visited = new boolean[N];
-		
 		
 		st = new StringTokenizer(br.readLine());
 		
@@ -52,8 +50,11 @@ public class boj15655_N°úM6 {
 		
 		Arrays.sort(nums);
 		
-		combination(0,0);
+		combination(0);
 		
+		
+		
+
 	}
 
 }
