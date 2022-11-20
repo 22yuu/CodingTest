@@ -68,19 +68,20 @@ public class boj2178_¹Ì·ÎÅ½»ö {
 			}
 		}
 		
-
-		
 		bfs(0,0);
-		//System.out.println(map[N-1][M-1]);
 		System.out.println(answer);
 		
-//		for(int i = 0 ; i < N ; i++) {
-//			for(int j = 0; j < M; j++) {
-//				System.out.print(map[i][j]);
-//			}
-//			System.out.println();
-//		}
+
 		
 		br.close();
+	}
+	
+	public static void print() {
+		for(int i = 0 ; i < N ; i++) {
+			for(int j = 0; j < M; j++) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
 	}
 }
