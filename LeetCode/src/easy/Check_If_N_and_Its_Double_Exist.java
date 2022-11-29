@@ -29,6 +29,6 @@ public class Check_If_N_and_Its_Double_Exist {
 		
 		Solution solution = new Solution();
 		
-		solution.checkIfExist(arr);
+		System.out.println(solution.checkIfExist(arr));
 	}
 }
